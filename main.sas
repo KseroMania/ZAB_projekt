@@ -1,4 +1,4 @@
-%let lokalizacja=C:\Projekty\ZAB\ESS8e02_1.sas;
+%let lokalizacja=C:\Projekty\ZAB\Projekt_ZAB;
 libname IN "&lokalizacja";
 %include "&lokalizacja\Liczba_brakow_danych.sas";
 %include "&lokalizacja\Test_chi_sq.sas";
@@ -50,7 +50,8 @@ czy_uzywa_internetu
 czy_rownosciowy
 konkubinat
 );
-
+title '';
+ods pdf file="&lokalizacja.\wyniki.pdf";
 proc mi data = PRE_1 out = POST_1 nimpute = 5 seed = 35399;
 
 class CZY_90_PERC czy_wyzsze
@@ -91,3 +92,5 @@ czy_uzywa_internetu
 czy_rownosciowy
 konkubinat;
 run;
+
+ods pdf close;
